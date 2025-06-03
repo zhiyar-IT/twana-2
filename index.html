@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پەراوگەو چامەمەنی توانا ٢</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Noto+Sans+Arabic:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #00bcd4;
+            --accent: #8e54e9;
+            --white: #fff;
+            --gray: #f5f6fa;
+            --shadow: 0 8px 32px rgba(44,62,80,0.13);
+            --gradient: linear-gradient(100deg, #00bcd4 0%, #8e54e9 100%);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;
+            background: var(--gray);
+            color: var(--primary);
+            margin: 0;
+            direction: rtl;
+        }
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav a:hover, .nav a.active {
+            background: var(--gradient);
+            color: var(--white);
+        }
+        .hero {
+            margin-top: 90px;
+            background: linear-gradient(120deg, rgba(26,35,126,0.93) 60%, rgba(0,188,212,0.7)),
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 6rem 2rem 4rem 2rem;
+            text-align: center;
+            border-radius: 0 0 48px 48px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 40px;
+            background: linear-gradient(to top, var(--gray), transparent);
+            z-index: 1;
+        }
+        .hero-title {
+            font-size: 3.1rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;
+            text-shadow: 0 4px 24px rgba(0,0,0,0.13);
+            position: relative;
+            z-index: 2;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            font-size: 1.45rem;
+            margin-bottom: 2.5rem;
+            color: #e0e0e0;
+            position: relative;
+            z-index: 2;
+            font-weight: 600;
+        }
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .social-links a {
+            background: var(--white);
+            color: var(--primary);
+            font-size: 1.8rem;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.13);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-4px) scale(1.13);
+        }
+        /* Jobs Section */
+        .jobs-section {
+            background: var(--gradient);
+            padding: 4.5rem 2rem 4rem 2rem;
+            margin: 3rem 0 2rem 0;
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+        .jobs-section::before {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; left: 0;
+            height: 60px;
+            border-radius: 32px 32px 0 0;
+            background: linear-gradient(to bottom, var(--white), transparent 80%);
+            opacity: 0.08;
+        }
+        .jobs-title {
+            text-align: center;
+            color: var(--white);
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(44,62,80,0.13);
+        }
+        .jobs-desc {
+            text-align: center;
+            color: #f9f9f9;
+            font-size: 1.22rem;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+        }
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .job-card {
+            background: rgba(255,255,255,0.99);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+            padding: 2.2rem 1rem 1.2rem 1rem;
+            text-align: center;
+            transition: transform 0.22s, box-shadow 0.22s;
+            border: 1px solid #e3e3e3;
+            font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.22rem;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        .job-card::before {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; left: 0; height: 7px;
+            border-radius: 22px 22px 0 0;
+            background: var(--gradient);
+            opacity: 0.22;
+        }
+        .job-card:hover {
+            transform: translateY(-7px) scale(1.07);
+            box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+            background: #f8fafc;
+        }
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3.5rem 2rem;
+            border-radius: 40px 40px 0 0;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .footer-section p {
+            margin-bottom: 0.5rem;
+            font-size: 1.08rem;
+        }
+        .contact-info i {
+            margin-left: 0.5rem;
+            color: var(--accent);
+        }
+        .footer .social-links {
+            margin-top: 1rem;
+            gap: 0.7rem;
+        }
+        .footer .social-links a {
+            width: 40px;
+            height: 40px;
+            font-size: 1.3rem;
+        }
+        @media (max-width: 900px) {
+            .jobs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .jobs-title {
+                font-size: 1.3rem;
+            }
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <span class="logo">پەراوگەو چامەمەنی توانا ٢</span>
+            <nav class="nav">
+                <a href="#home" class="active">سەرەتا</a>
+                <a href="#jobs">خزمەتگوزاریەکان</a>
+                <a href="#contact">پەیوەندی</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-title">پەراوگەو چامەمەنی توانا ٢</div>
+        <div class="hero-desc">
+            بۆ دابینکردنی پێداویستی قوتابخانە و فەرمانگەکان و بۆ هەموو بوارێکی چاپ و ریکلام
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1JGZ5X6xsa/?mibextid=wwXIfr" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/muhamad_rawanduz?igsh=MTM1cDR6ajh3OWNsYw==" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://snapchat.com/t/kSJBtsDZ" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+            <a href="https://t.me/Muhamadstationery" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=9647814898308" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+    <!-- Jobs/Services Section -->
+    <section class="jobs-section" id="jobs">
+        <div class="jobs-title">خزمەتگوزاریەکانمان</div>
+        <div class="jobs-desc">
+            بۆ هەموو جۆرێک لە چاپ و تایپ و ریکلام و پێداویستی قوتابخانە و فەرمانگەکان
+        </div>
+        <div class="jobs-grid">
+            <div class="job-card"><div class="job-title">پۆستەر</div></div>
+            <div class="job-card"><div class="job-title">ڕاپۆرت</div></div>
+            <div class="job-card"><div class="job-title">سیمینار</div></div>
+            <div class="job-card"><div class="job-title">بڕوشەر</div></div>
+            <div class="job-card"><div class="job-title">کەپس</div></div>
+            <div class="job-card"><div class="job-title">سپایرۆل</div></div>
+            <div class="job-card"><div class="job-title">تایپ</div></div>
+            <div class="job-card"><div class="job-title">تجلید</div></div>
+            <div class="job-card"><div class="job-title">کانڤاس</div></div>
+            <div class="job-card"><div class="job-title">مەلزەمە</div></div>
+            <div class="job-card"><div class="job-title">فلێکس</div></div>
+            <div class="job-card"><div class="job-title">ستیکەر</div></div>
+            <div class="job-card"><div class="job-title">وەصڵ</div></div>
+            <div class="job-card"><div class="job-title">بزنس کارت</div></div>
+            <div class="job-card"><div class="job-title">ئالا</div></div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ناونیشان</h3>
+                <p><i class="fas fa-map-marker-alt"></i> سۆران: شەقامی کاوە (حەریق) نزیک تیممارت</p>
+            </div>
+            <div class="footer-section">
+                <h3>ژمارە تەلەفون</h3>
+                <p><i class="fas fa-phone"></i> 07507986888</p>
+                <p><i class="fas fa-phone"></i> 07814898308</p>
+            </div>
+            <div class="footer-section">
+                <h3>تۆڕە کۆمەڵایەتییەکان</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1JGZ5X6xsa/?mibextid=wwXIfr" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/muhamad_rawanduz?igsh=MTM1cDR6ajh3OWNsYw==" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://snapchat.com/t/kSJBtsDZ" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+                    <a href="https://t.me/Muhamadstationery" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=9647814898308" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>بارکۆدی ماڵپەڕ</h3>
+                <img id="qr-img" src="your-qrcode-image.png" alt="QR code for website" style="width:120px; margin-top:1rem; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <p style="font-size:0.95rem; color:#eee; margin-top:0.5rem;">ماڵپەڕمان بە بارکۆد</p>
+                <button id="upload-btn" style="margin-top:1rem; background:var(--gradient); color:#fff; border:none; border-radius:8px; padding:0.7rem 1.5rem; font-size:1rem; font-family:inherit; font-weight:600; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s;">
+                    بارکۆدی نوێ زیاد بکە
+                </button>
+                <input type="file" id="qr-upload" accept="image/*" style="display:none;">
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Password for owner (change this to your desired password)
+        const OWNER_PASS = "twana2owner";
+
+        // Hide upload button by default
+        document.getElementById('upload-btn').style.display = "none";
+
+        // Show password prompt on QR image click (or you can use another trigger)
+        document.getElementById('qr-img').onclick = function() {
+            if (localStorage.getItem('qr_owner') === 'yes') {
+                document.getElementById('upload-btn').style.display = "inline-block";
+                return;
+            }
+            const pass = prompt("تکایە وشەی نهێنی بنووسە بۆ گۆڕینی بارکۆد:");
+            if (pass === OWNER_PASS) {
+                document.getElementById('upload-btn').style.display = "inline-block";
+                localStorage.setItem('qr_owner', 'yes');
+            } else if (pass !== null) {
+                alert("وشەی نهێنی هەڵەیە!");
+            }
+        };
+
+        // Show file picker on button click
+        document.getElementById('upload-btn').onclick = function() {
+            document.getElementById('qr-upload').click();
+        };
+        // When a file is selected, show and save it
+        document.getElementById('qr-upload').onchange = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                document.getElementById('qr-img').src = evt.target.result;
+                localStorage.setItem('shop_qr_code', evt.target.result);
+            };
+            reader.readAsDataURL(file);
+        };
+        // On page load, check for saved QR code
+        window.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('shop_qr_code');
+            if (saved) document.getElementById('qr-img').src = saved;
+        });
+    </script>
+</body>
+</html>
